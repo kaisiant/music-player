@@ -42,15 +42,23 @@ function App() {
     if (playlist?.length) return;
 
     const getAudioPaths = async () => {
-      const modules = await Promise.all([
-        import(`./assets/tracks/1.mp3`),
-        import(`./assets/tracks/2.mp3`),
-        import(`./assets/tracks/3.mp3`),
-        import(`./assets/tracks/4.mp3`),
-        import(`./assets/tracks/5.mp3`),
-        import(`./assets/tracks/6.mp3`),
-      ]);
-      return modules.map((module) => module.default);
+      // const modules = await Promise.all([
+      //   import(`/assets/tracks/1.mp3`),
+      //   import(`/assets/tracks/2.mp3`),
+      //   import(`/assets/tracks/3.mp3`),
+      //   import(`/assets/tracks/4.mp3`),
+      //   import(`/assets/tracks/5.mp3`),
+      //   import(`/assets/tracks/6.mp3`),
+      // ]);
+      // return modules.map((module) => module.default);
+      return [
+        `/assets/tracks/1.mp3`,
+        `/assets/tracks/2.mp3`,
+        `/assets/tracks/3.mp3`,
+        `/assets/tracks/4.mp3`,
+        `/assets/tracks/5.mp3`,
+        `/assets/tracks/6.mp3`,
+      ];
     };
 
     const importAudioFiles = async () => {

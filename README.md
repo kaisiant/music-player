@@ -13,10 +13,12 @@ MPlay, a music player that built with typescript react, redux, tailwindcss.
 
 ## File structure
 
+- public
+  - assets
+    - tracks (mp3 files)
 - assets
   - icons (svg icons react component)
   - images (placeholder images)
-  - tracks (mp3 files)
 - components
   - common (Button, IconButton, etc)
   - X
