@@ -29,6 +29,7 @@ function App() {
   const [duration, setDuration] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [showPlaylist, setShowPlaylist] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const seekBarRef = useRef<HTMLDivElement>(null);
@@ -44,6 +45,7 @@ function App() {
     }
 
     const toastId = toast.loading("Loading tracks");
+    setShowOverlay(true);
 
     const getAudioPaths = async () => {
       // const modules = await Promise.all([
@@ -118,6 +120,8 @@ function App() {
         toast.error("Failed to load tracks", {
           id: toastId,
         });
+      } finally {
+        setShowOverlay(false);
       }
     };
 
@@ -381,6 +385,7 @@ function App() {
       >
         <Playlist isPlaying={isPlaying} />
       </section>
+      {showOverlay && <div className="overlay" />}
     </div>
   );
 }
