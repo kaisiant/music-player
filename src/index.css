@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  @apply dark:bg-gray-950 dark:text-gray-300;
+}
+
+#root {
+  @apply h-full bg-gray-50 lg:min-h-screen dark:bg-gray-950;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-animation {
+  animation: spin 10s linear infinite forwards;
+}
+
+.spin-animation.paused {
+  animation-play-state: paused;
+}
