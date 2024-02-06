@@ -348,6 +348,7 @@ function App() {
         aria-label="Audio Player"
         role="region"
       />
+      {showOverlay && <div className="text-center mb-4">Loading Tracks...</div>}
       <div className="flex flex-1 flex-col">
         <AlbumCoverSection
           trackIndex={currentTrackIndex}
