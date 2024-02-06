@@ -125,25 +125,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isLoop) {
-      toast(
-        <div>
-          <span>Looping </span>
-          <span className="italic">
-            {formatTrackName(playlist[currentTrackIndex].metadata)}
-          </span>
-        </div>,
-      );
-    } else {
-      toast(
-        <div>
-          <span>OFF loop </span>
-        </div>,
-      );
-    }
-  }, [isLoop]);
-
-  useEffect(() => {
     const currentAudioRef = audioRef.current;
     const currentSeekBarRef = seekBarRef.current;
 
@@ -322,7 +303,25 @@ function App() {
   };
 
   const handleLoop = () => {
-    dispatch(setLoopMode(!isLoop));
+    const newIsLoopState = !isLoop;
+    dispatch(setLoopMode(newIsLoopState));
+
+    if (newIsLoopState) {
+      toast(
+        <div>
+          <span>Looping </span>
+          <span className="italic">
+            {formatTrackName(playlist[currentTrackIndex].metadata)}
+          </span>
+        </div>,
+      );
+    } else {
+      toast(
+        <div>
+          <span>OFF loop</span>
+        </div>,
+      );
+    }
   };
 
   const togglePlaylistMenu = () => setShowPlaylist((prev) => !prev);
