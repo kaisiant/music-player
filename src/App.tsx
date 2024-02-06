@@ -39,7 +39,11 @@ function App() {
 
   useEffect(() => {
     // if found persisted playlist, return
-    if (playlist?.length) return;
+    if (playlist?.length) {
+      return;
+    }
+
+    const toastId = toast.loading("Loading tracks");
 
     const getAudioPaths = async () => {
       // const modules = await Promise.all([
@@ -84,6 +88,10 @@ function App() {
           })),
         );
 
+        toast.success("Tracks loaded successfully", {
+          id: toastId,
+        });
+
         const audioFilesWithFormattedMetadata = audioFilesWithMetadata.map(
           (audio) => {
             const { artist = "", title = "", v2 } = audio.metadata || {};
@@ -107,6 +115,9 @@ function App() {
         );
       } catch (error) {
         console.error("Error importing audio files:", error);
+        toast.error("Failed to load tracks", {
+          id: toastId,
+        });
       }
     };
 
